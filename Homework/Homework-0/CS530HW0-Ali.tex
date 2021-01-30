@@ -1,0 +1,97 @@
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+\title{Homework 0}
+\author{Md Ali \\ 
+CS 530: Theory of Computation} 
+\date{January 29, 2021}
+
+\maketitle
+ 
+\begin{exercise}{1}
+Show that the set of reals between 0 and 1, in the interval $(0,1)$ is uncountable.
+\end{exercise} 
+
+\begin{proof}
+We will use proof by contradiction, so assume that the set of reals in the interval of $(0,1)$ are indeed countable. \\ \\ 
+This makes all the decimal expansions of the reals in $(0,1)$ to be
+\begin{align}
+    0.a_{11}a_{12}a_{13} ... \nonumber \\
+    0.a_{21}a_{22}a_{23} ... \nonumber \\
+    0.a_{31}a_{32}a_{33} .... \nonumber \\
+    ... \nonumber  \\
+    ... \nonumber \\
+    ... \nonumber
+\end{align}
+
+So taking this list we can define a decimal value $x$, where $x = x_{1}x_{2}x_{3}...$ where 
+\begin{align}
+    x_{1} \neq a_{11} \text{ (or 9)}\nonumber \\
+    x_{2} \neq a_{22} \text{ (or 9)}\nonumber \\
+    x_{3} \neq a_{33} \text{ (or 9)}\nonumber \\
+    ... \nonumber
+\end{align}
+
+This continues on. Then this decimal expansion of $x$ does not end in recurring 9's and it is different from the $n$th element in the $n$th decimal place. This leads to represent an element of the interval of $(0,1)$ in the reals is not in the list, meaning that we do not have a list. This means that we do not have a list of the reals in the interval of $(0,1)$. Hence result, as this is a contradiction proving that the set of reals between $0$ and $1$, in the interval $(0,1)$ is indeed uncountable. 
+
+\end{proof} 
+
+\begin{exercise}{2}
+Show the equivalence of the following, an undirected graph has no cycles if and only if there is a unique path between all pairs of vertices.
+\end{exercise}
+ 
+\begin{proof}
+First We will prove the biconditional with the antecedent first implicating the consequent and then prove the consequent implicating towards the antecedent. \\ \\
+We will take the contradiction where we assume an undirected graph has at least one cycle, and we will attempt to prove that there is a unique path between all pairs of vertices. By definition of a cycle, a cycle is a close path, meaning we must start and end at the same vertex. This contradicts the statement of having a unique path as there will always be two separate paths between any pair of vertices due to the definition of a cycle. \\ \\ 
+Hence by contradiction, if an undirected graph has no cycles then there is a unique path between all pairs of vertices. \\ \\
+Now we must prove the other part of the biconditional, where if there is a unique path between all pair than an undirected graph has no cycles. \\ \\
+Here we will also utilized proof by contradition. Here we will assume that there is no unique paths. Hence, if we have a pair of vertices and we have to have no unique paths, we will ultimately construct at least one cycle. \\ \\ 
+Hence, by contradiction, there must be a unique path between all pairs then an undirected graph has no cycles. \\ \\
+With the above proof, the biconditional is proven. Hence result.
+
+\end{proof}
+
+\begin{exercise}{3}
+Look at the diagram in the notes from class 2 and describe the set of strings that lead from start to final state. 
+\end{exercise}
+
+\begin{proof}
+The formal description will be $(\{q_{1},q_{2}\},\{0,1\},\delta,q_{1},\{q_{2}\})$ Hence this diagram after a few sample input we can see that all strings are accepted as long as it end in $1$.
+
+\end{proof}
+ 
+\begin{exercise}{4}
+Prove the following Lemma. Let $w$ be a string that takes machine $M_{a}$ from $q_{0}^{A}$ to $q_{w}^{A}$ and machine $M_{B}$ from $q_{0}^{B}$ to $q_{w}^{B}$, then $w$ takes $M_{C}$ from  $q_{0}^{C}$ to $q_{w}^{C}$, where  $q_{0}^{C} = (q_{0}^{A},q_{0}^{B})$ and $q_{w}^{C} = (q_{w}^{A},q_{w}^{B})$
+\end{exercise}
+
+\begin{proof}
+We will utilize proof by induction, if $w = \epsilon$ then this is obviously true as the state $q_{0}^{C} = (q_{0}^{A},q_{0}^{B})$ is true. \\ \\
+We will assume that for string of length is $\leq k$. We will have to show that the statement is true for $k+1$. So lets take where $w = k$. We see that $M_{a}$ will be $q_{0}^{A}$ to $q_{k}^{A}$ and $M_{B}$ from $q_{0}^{B}$ to $q_{k}^{B}$. Hence, $M_{C}$ from  $q_{0}^{C}$ to $q_{k}^{C}$. This will conclude that $q_{0}^{C} = (q_{0}^{A},q_{0}^{B})$ and $q_{k}^{C} = (q_{k}^{A},q_{k}^{B})$. Now we can take a look at the case where $w = k+1$. \\ \\
+So for the case where $w = k+1$, $M_{a}$ will be $q_{0}^{A}$ to $q_{k+1}^{A}$ and $M_{B}$ from $q_{0}^{B}$ to $q_{k+1}^{B}$. Hence, $M_{C}$ from  $q_{0}^{C}$ to $q_{k+1}^{C}$. This will conclude that $q_{0}^{C} = (q_{0}^{A},q_{0}^{B})$ and $q_{k+1}^{C} = (q_{k+1}^{A},q_{k+1}^{B})$ \\ \\
+Hence by induction, if $w$ is to be a string that takes machine $M_{a}$ from $q_{0}^{A}$ to $q_{w}^{A}$ and machine $M_{B}$ from $q_{0}^{B}$ to $q_{w}^{B}$, then $w$ takes $M_{C}$ from  $q_{0}^{C}$ to $q_{w}^{C}$, where  $q_{0}^{C} = (q_{0}^{A},q_{0}^{B})$ and $q_{w}^{C} = (q_{w}^{A},q_{w}^{B})$ is indeed true.
+
+\end{proof}
+
+\end{document}
